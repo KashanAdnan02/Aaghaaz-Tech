@@ -6,10 +6,11 @@ import {
     updateRegistration,
     deleteRegistration
 } from '../controllers/registration.controller.mjs';
+import upload from '../utils/multer.mjs';
 
 const router = express.Router();
 
-router.post('/', createRegistration);
+router.post('/', upload.single('profilePicture'), createRegistration);
 router.get('/', getAllRegistrations);
 router.get('/:id', getRegistration);
 router.put('/:id', updateRegistration);
